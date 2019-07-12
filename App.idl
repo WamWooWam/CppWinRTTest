@@ -1,0 +1,9 @@
+namespace CppWinRTTest
+{
+    [default_interface]
+    runtimeclass App : Windows.UI.Xaml.Application
+    {
+        App();
+        void OnLaunched(Windows.ApplicationModel.Activation.LaunchActivatedEventArgs args);
+    }
+}

@@ -1,0 +1,6 @@
+bin/
+obj/
+winrt/
+
+*.winmd
+*.g.*
