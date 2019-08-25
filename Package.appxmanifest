@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Package xmlns="http://schemas.microsoft.com/appx/2010/manifest">
+  <Identity Name="c10c1bc2-db82-4f92-83d9-3291a20a16fa" Publisher="CN=wamwo" Version="1.0.0.0" />    
+  <Properties>
+    <DisplayName>CppWinRTTest</DisplayName>
+    <PublisherDisplayName>wamwo</PublisherDisplayName>
+    <Logo>Assets\StoreLogo.png</Logo>
+  </Properties>
+  <Resources>
+    <!-- Required by Add-AppxPackage -->
+    <Resource Language="en-us"/>
+  </Resources>
+  <Prerequisites>
+    <OSMinVersion>6.3.0</OSMinVersion>
+    <OSMaxVersionTested>6.3.0</OSMaxVersionTested>
+  </Prerequisites>
+  <Applications>
+    <Application Id="App" Executable="CppWinRTTest.exe" EntryPoint="CppWinRTTest.App">
+      <VisualElements
+          BackgroundColor="#808080"
+          Description="A Windows 8.1 app in C++/WinRT"
+          DisplayName="CppWinRTTest"
+          ForegroundText="light"
+          Logo="Assets\StoreLogo.png"
+          SmallLogo="Assets\StoreLogo.png"
+          ToastCapable="true">
+        <SplashScreen
+            BackgroundColor="#808080"
+            Image="Assets\SplashScreen.scale-200.png" />
+      </VisualElements>
+    </Application>
+  </Applications>
+</Package>

@@ -26,12 +26,21 @@ namespace winrt::CppWinRTTest::implementation
             button.Content(box_value(L"Hello, world!"));
             button.HorizontalAlignment(HorizontalAlignment::Center);
             button.VerticalAlignment(VerticalAlignment::Center);
-            button.Click([](auto&&, auto&&) -> IAsyncAction {
+            button.Click([button](auto&&, auto&&) -> IAsyncAction {
+                UICommand command;
+                command.Label(L"Thanks, dad.");
+                command.Invoked([button](auto&&) {
+                    button.Content(box_value(L"Wow!"));
+                });
+
                 MessageDialog dialog{ L"Wow! I'm so impressed! You must be super proud of yourself.", L"You clicked a button!" };
+                dialog.Commands().Append(command);
+
                 co_await dialog.ShowAsync();
             });
 
             root.Children().Append(button);
+            wind.Content(root);
         }
 
         wind.Activate(); // windows will kill us if we don't call this.

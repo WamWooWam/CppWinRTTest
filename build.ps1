@@ -37,7 +37,11 @@ Write-Host "Compiling code..."
 Write-Host
 
 cd "obj"
-cl /c /nologo /EHsc /std:c++17 /Ycpch.h /Zi /await (ls -Recurse ../*.cpp)
+
+# foreach ($file in ) {
+    cl /c /nologo /EHsc /MT /std:c++17 /MP /Zi /await (ls -Recurse ../*.cpp)
+# } 
+
 cd ..
 
 if($LASTEXITCODE -ne 0) {
@@ -48,7 +52,7 @@ if($LASTEXITCODE -ne 0) {
 Write-Host
 Write-Host "Linking..."
 
-link /NOLOGO (ls -Recurse "obj/*.obj") windowsapp.lib /MACHINE:x86 /DEBUG /OUT:"bin/CppWinRTTest.exe" /PDB:"bin/CppWinRTTest.pdb"
+link /NOLOGO (ls -Recurse "obj/*.obj") windowsapp.lib /APPCONTAINER /DEBUG /OUT:"bin/CppWinRTTest.exe" /PDB:"bin/CppWinRTTest.pdb"
 
 if($LASTEXITCODE -ne 0) {
     Write-Error "Build failed!"
@@ -57,7 +61,6 @@ if($LASTEXITCODE -ne 0) {
 
 Write-Host
 Write-Host "CppWinRTTest > bin\CppWinRTTest.exe"
-Write-Host
 Write-Host "Build succeeded!"
 
-
+.\deploy.ps1 -RegisterIfNeeded
